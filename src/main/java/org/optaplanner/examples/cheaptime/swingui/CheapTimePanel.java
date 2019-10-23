@@ -73,7 +73,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
 
     public CheapTimePanel() {
         setLayout(new BorderLayout());
-        groupByMachineCheckBox = new JCheckBox("Group by assigned machine", false);
+        groupByMachineCheckBox = new JCheckBox("按分析的机台分组", false);
         groupByMachineCheckBox.setHorizontalAlignment(SwingConstants.RIGHT);
         groupByMachineCheckBox.addActionListener(e -> {
             updatePanel(getSolution());
@@ -91,7 +91,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
 
     private JFreeChart createChart(CheapTimeSolution solution) {
         TangoColorFactory tangoColorFactory = new TangoColorFactory();
-        NumberAxis rangeAxis = new NumberAxis("Period");
+        NumberAxis rangeAxis = new NumberAxis("时间周期(Period)");
         rangeAxis.setRange(-0.5, solution.getGlobalPeriodRangeTo() + 0.5);
         XYPlot taskAssignmentPlot = createTaskAssignmentPlot(tangoColorFactory, solution);
         XYPlot periodCostPlot = createPeriodCostPlot(tangoColorFactory, solution);
@@ -102,7 +102,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
         combinedPlot.add(capacityPlot, 1);
 
         combinedPlot.setOrientation(PlotOrientation.HORIZONTAL);
-        return new JFreeChart("Cheap Power Time Scheduling", JFreeChart.DEFAULT_TITLE_FONT,
+        return new JFreeChart("降低电力费用规划(Cheap Power Time Scheduling)", JFreeChart.DEFAULT_TITLE_FONT,
                 combinedPlot, true);
     }
 
@@ -113,7 +113,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
         HighLowRenderer renderer = new HighLowRenderer();
         renderer.setTickLength(0.0);
         int seriesIndex = 0;
-        OHLCSeries unassignedProjectSeries = new OHLCSeries("Unassigned");
+        OHLCSeries unassignedProjectSeries = new OHLCSeries("未分配");
         seriesCollection.addSeries(unassignedProjectSeries);
         machineSeriesMap.put(null, unassignedProjectSeries);
         renderer.setSeriesStroke(seriesIndex, new BasicStroke(3.0f));
@@ -144,7 +144,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
                     startPeriod, endPeriod, task.getStartPeriodRangeTo() + task.getDuration());
             pixelIndex++;
         }
-        NumberAxis domainAxis = new NumberAxis("Task");
+        NumberAxis domainAxis = new NumberAxis("任务");
         domainAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
         domainAxis.setRange(-0.5, taskAssignmentList.size() - 0.5);
         domainAxis.setInverted(true);
@@ -152,7 +152,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
     }
 
     private XYPlot createPeriodCostPlot(TangoColorFactory tangoColorFactory, CheapTimeSolution solution) {
-        XYSeries series = new XYSeries("Power price");
+        XYSeries series = new XYSeries("电价");
         for (PeriodPowerPrice periodPowerPrice : solution.getPeriodPowerPriceList()) {
             series.add((double) periodPowerPrice.getPowerPriceMicros() / 1000000.0, periodPowerPrice.getPeriod());
         }
@@ -161,7 +161,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
         XYItemRenderer renderer = new StandardXYItemRenderer(StandardXYItemRenderer.SHAPES);
         renderer.setSeriesPaint(0, TangoColorFactory.ORANGE_1);
         renderer.setSeriesShape(0, ShapeUtilities.createDiamond(2.0F));
-        NumberAxis domainAxis = new NumberAxis("Power price");
+        NumberAxis domainAxis = new NumberAxis("电价");
         return new XYPlot(seriesCollection, domainAxis, null, renderer);
     }
 
@@ -212,7 +212,7 @@ public class CheapTimePanel extends SolutionPanel<CheapTimeSolution> {
             renderer.setSeriesVisibleInLegend(seriesIndex, false);
             seriesIndex++;
         }
-        NumberAxis domainAxis = new NumberAxis("Capacity");
+        NumberAxis domainAxis = new NumberAxis("机台能产上限");
         return new XYPlot(seriesCollection, domainAxis, null, renderer);
     }
 }

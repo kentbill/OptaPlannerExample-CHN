@@ -39,12 +39,12 @@ public class CheapTimeApp extends CommonApp<CheapTimeSolution> {
     }
 
     public CheapTimeApp() {
-        super("Cheap time scheduling",
-                "Official competition name: ICON Challenge on Forecasting and Scheduling\n\n" +
-                "Assign tasks to machines and time.\n\n" +
-                "Each machine must have enough hardware to run all of its tasks.\n" +
-                "Each task and machine consumes power. The power price differs over time.\n" +
-                "Minimize the power cost.",
+        super("按时间降低成本规划",
+                "官方比赛名称: ICON Challenge on Forecasting and Scheduling\n\n" +
+                "将任务分配到机台（空间）和时间上.\n\n" +
+                "每个机台必然有足够的硬件资源来运行分配到它的任务.\n" +
+                "每个任务和机台都会消耗电能，电费在不同的时段价格不同.\n" +
+                "优化目标：最小化电费.",
                 SOLVER_CONFIG, DATA_DIR_NAME,
                 CheapTimePanel.LOGO_PATH);
     }

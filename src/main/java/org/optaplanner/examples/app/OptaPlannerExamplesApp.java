@@ -87,7 +87,7 @@ public class OptaPlannerExamplesApp extends JFrame {
     private JTextArea descriptionTextArea;
 
     public OptaPlannerExamplesApp() {
-        super("OptaPlanner examples " + determineOptaPlannerExamplesVersion());
+        super("OptaPlanner 示例 " + determineOptaPlannerExamplesVersion());
         setIconImage(SolverAndPersistenceFrame.OPTA_PLANNER_ICON.getImage());
         setContentPane(createContentPane());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +96,7 @@ public class OptaPlannerExamplesApp extends JFrame {
     private Container createContentPane() {
         JPanel contentPane = new JPanel(new BorderLayout(5, 5));
         contentPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        JLabel titleLabel = new JLabel("Which example do you want to see?", JLabel.CENTER);
+        JLabel titleLabel = new JLabel("请选择示例?", JLabel.CENTER);
         titleLabel.setFont(titleLabel.getFont().deriveFont(20.0f));
         contentPane.add(titleLabel, BorderLayout.NORTH);
         JScrollPane examplesScrollPane = new JScrollPane(createExamplesPanel());
@@ -189,7 +189,7 @@ public class OptaPlannerExamplesApp extends JFrame {
     private JPanel createExtraPanel() {
         JPanel extraPanel = new JPanel(new GridLayout(0, 1, 5, 5));
         extraPanel.add(new JPanel());
-        Action homepageAction = new OpenBrowserAction("www.optaplanner.org", "https://www.optaplanner.org");
+        Action homepageAction = new OpenBrowserAction("www.optaplanner.org", "https://www.optaplanner.org/localized/zh/index.html");
         extraPanel.add(new JButton(homepageAction));
         Action documentationAction = new OpenBrowserAction("Documentation", "https://www.optaplanner.org/learn/documentation.html");
         extraPanel.add(new JButton(documentationAction));
