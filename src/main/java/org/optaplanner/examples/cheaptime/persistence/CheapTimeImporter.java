@@ -113,7 +113,7 @@ public class CheapTimeImporter extends AbstractTxtSolutionImporter<CheapTimeSolu
 
     @Override
     public String getInputFileSuffix() {
-        throw new IllegalStateException("The inputFile is a directory, so there is no suffix.");
+		throw new IllegalStateException("输入文件是一个文件夹，没有后缀."/* "The inputFile is a directory, so there is no suffix." */);
     }
 
     @Override
@@ -155,8 +155,10 @@ public class CheapTimeImporter extends AbstractTxtSolutionImporter<CheapTimeSolu
             }
             possibleSolutionSize = possibleSolutionSize.multiply(
                     BigInteger.valueOf(solution.getMachineList().size()).pow(solution.getTaskList().size()));
-            logger.info("CheapTime {} has {} resources, {} machines, {} periods and {} tasks"
-                         + " with a search space of {}.",
+            /*logger.info("CheapTime {} has {} resources, {} machines, {} periods and {} tasks"
+                         + " with a search space of {}.",*/
+            logger.info("问题 {} 有 {} 个资源, {} 个机台, {} 个时段和 {} 个任务"
+                    + " 问题规模为 {}.",
                     getInputId(),
                     solution.getResourceList().size(),
                     solution.getMachineList().size(),
@@ -227,8 +229,13 @@ public class CheapTimeImporter extends AbstractTxtSolutionImporter<CheapTimeSolu
                 task.setId(Long.parseLong(taskLineTokens[0]));
                 int duration = Integer.parseInt(taskLineTokens[1]);
                 if (duration <= 0) {
-                    throw new IllegalArgumentException("Task with id (" + task.getId()
-                            + ") has a duration (" + duration + ") which is not 1 or higher.");
+					/*
+					 * throw new IllegalArgumentException("Task with id (" + task.getId() +
+					 * ") has a duration (" + duration + ") which is not 1 or higher.");
+					 */
+                	
+                	 throw new IllegalArgumentException("ID为 (" + task.getId()
+                     + ") 的任务，其时长 (" + duration + ") 小于1.");
                 }
                 task.setDuration(duration);
                 int earliestStart = Integer.parseInt(taskLineTokens[2]);

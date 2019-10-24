@@ -106,7 +106,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
     public SolverAndPersistenceFrame(SolutionBusiness<Solution_> solutionBusiness,
             SolutionPanel<Solution_> solutionPanel, CommonApp.ExtraAction<Solution_>[] extraActions) {
-        super(solutionBusiness.getAppName() + " OptaPlanner example");
+        super(solutionBusiness.getAppName() + " OptaPlanner 示例");
         this.solutionBusiness = solutionBusiness;
         this.solutionPanel = solutionPanel;
         setIconImage(OPTA_PLANNER_ICON.getImage());
@@ -182,13 +182,13 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private JComponent createQuickOpenUnsolvedPanel() {
         quickOpenUnsolvedJList = new JList<>(new DefaultListModel<>());
         List<File> unsolvedFileList = solutionBusiness.getUnsolvedFileList();
-        return createQuickOpenPanel(quickOpenUnsolvedJList, "Unsolved dataset shortcuts", unsolvedFileList);
+        return createQuickOpenPanel(quickOpenUnsolvedJList, "待求解数据集"/*"Unsolved dataset shortcuts"*/, unsolvedFileList);
     }
 
     private JComponent createQuickOpenSolvedPanel() {
         quickOpenSolvedJList = new JList<>(new DefaultListModel<>());
         List<File> solvedFileList = solutionBusiness.getSolvedFileList();
-        return createQuickOpenPanel(quickOpenSolvedJList, "Solved dataset shortcuts", solvedFileList);
+        return createQuickOpenPanel(quickOpenSolvedJList, "优化结果"/*"Solved dataset shortcuts"*/, solvedFileList);
     }
 
     private JComponent createQuickOpenPanel(JList<QuickOpenAction> listPanel, String title, List<File> fileList) {
@@ -377,9 +377,9 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
                 solutionBusiness.setSolution(bestSolution);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new IllegalStateException("Solving was interrupted.", e);
+                throw new IllegalStateException("求解过程被中断"/*"Solving was interrupted."*/, e);
             } catch (ExecutionException e) {
-                throw new IllegalStateException("Solving failed.", e.getCause());
+                throw new IllegalStateException("求解失败"/*"Solving failed."*/, e.getCause());
             } finally {
                 setSolvingState(false);
                 resetScreen();
@@ -391,14 +391,14 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private class TerminateSolvingEarlyAction extends AbstractAction {
 
         public TerminateSolvingEarlyAction() {
-            super("Terminate solving early",
+            super("人工终止求解"/*"Terminate solving early"*/,
                     new ImageIcon(SolverAndPersistenceFrame.class.getResource("terminateSolvingEarlyAction.png")));
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             terminateSolvingEarlyAction.setEnabled(false);
-            progressBar.setString("Terminating...");
+			progressBar.setString("终止中..."/* "Terminating..." */);
             // This async, so it doesn't stop the solving immediately
             solutionBusiness.terminateSolvingEarly();
         }
@@ -407,7 +407,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
     private class OpenAction extends AbstractAction {
 
-        private static final String NAME = "Open...";
+		private static final String NAME = "打开..."/*"Open..."*/;
         private JFileChooser fileChooser;
 
         public OpenAction() {
@@ -422,7 +422,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
                 @Override
                 public String getDescription() {
-                    return "Solution files (*." + inputFileExtension + ")";
+					return "解决方案文件 (*."/* "Solution files (*." */ + inputFileExtension + ")";
                 }
             });
             fileChooser.setDialogTitle(NAME);
@@ -446,7 +446,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
     private class SaveAction extends AbstractAction {
 
-        private static final String NAME = "Save as...";
+		private static final String NAME = "另存为..."/*"Save as..."*/;
         private JFileChooser fileChooser;
 
         public SaveAction() {
@@ -461,7 +461,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
                 @Override
                 public String getDescription() {
-                    return "Solution files (*." + outputFileExtension + ")";
+                    return "解决方案文件 (*."/* "Solution files (*." */ + outputFileExtension + ")";
                 }
             });
             fileChooser.setDialogTitle(NAME);
@@ -490,7 +490,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
     private class ImportAction extends AbstractAction {
 
-        private static final String NAME = "Import...";
+		private static final String NAME = "导入..."/*"Import..."*/;
         private JFileChooser fileChooser;
 
         public ImportAction() {
@@ -512,7 +512,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
                         @Override
                         public String getDescription() {
-                            return "Import directory";
+							return "导入文件夹"/* "Import directory" */;
                         }
                     };
                     fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -525,7 +525,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
                         @Override
                         public String getDescription() {
-                            return "Import files (*." + importer.getInputFileSuffix() + ")";
+							return "导入文件 (*."/* "Import files (*." */ + importer.getInputFileSuffix() + ")";
                         }
                     };
                 }
@@ -557,7 +557,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
     private class ExportAction extends AbstractAction {
 
-        private static final String NAME = "Export as...";
+	private static final String NAME = "导入为..."/*"Export as..."*/;
         private final JFileChooser fileChooser;
 
         public ExportAction() {
@@ -575,7 +575,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
                 @Override
                 public String getDescription() {
-                    return "Export files (*." + solutionBusiness.getExportFileSuffix() + ")";
+					return "导出文件 (*."/* "Export files (*." */ + solutionBusiness.getExportFileSuffix() + ")";
                 }
             });
             fileChooser.setDialogTitle(NAME);
@@ -610,7 +610,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         usageExplanationPanel.add(usageExplanationLabel, BorderLayout.CENTER);
         JPanel descriptionPanel = new JPanel(new BorderLayout(2, 2));
         descriptionPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        descriptionPanel.add(new JLabel("Example description"), BorderLayout.NORTH);
+		descriptionPanel.add(new JLabel("示例描述"/* "Example description" */), BorderLayout.NORTH);
         JTextArea descriptionTextArea = new JTextArea(8, 70);
         descriptionTextArea.setEditable(false);
         descriptionTextArea.setText(solutionBusiness.getAppDescription());
@@ -654,7 +654,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         scoreField.setBorder(BorderFactory.createLoweredBevelBorder());
         scorePanel.add(scoreField, BorderLayout.CENTER);
         refreshScreenDuringSolvingToggleButton = new JToggleButton(refreshScreenDuringSolvingTrueIcon, true);
-        refreshScreenDuringSolvingToggleButton.setToolTipText("Refresh screen during solving");
+		refreshScreenDuringSolvingToggleButton.setToolTipText("求解时实时刷新"/* "Refresh screen during solving" */);
         refreshScreenDuringSolvingToggleButton.addActionListener(e -> {
             refreshScreenDuringSolvingToggleButton.setIcon(refreshScreenDuringSolvingToggleButton.isSelected() ?
                     refreshScreenDuringSolvingTrueIcon : refreshScreenDuringSolvingFalseIcon);
@@ -666,7 +666,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private class ShowConstraintMatchesDialogAction extends AbstractAction {
 
         public ShowConstraintMatchesDialogAction() {
-            super("Constraint matches", new ImageIcon(SolverAndPersistenceFrame.class.getResource("showConstraintMatchesDialogAction.png")));
+            super("违反约束"/*"Constraint matches"*/, new ImageIcon(SolverAndPersistenceFrame.class.getResource("showConstraintMatchesDialogAction.png")));
         }
 
         @Override
@@ -713,7 +713,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         solutionPanel.setEnabled(!solving);
         progressBar.setIndeterminate(solving);
         progressBar.setStringPainted(solving);
-        progressBar.setString(solving ? "Solving..." : null);
+        progressBar.setString(solving ? "求解中..."/*"Solving..."*/ : null);
         indictmentHeatMapToggleButton.setEnabled(solutionPanel.isIndictmentHeatMapEnabled() && !solving);
         showConstraintMatchesDialogAction.setEnabled(!solving);
     }
@@ -728,7 +728,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
     public void refreshScoreField(Score score) {
         scoreField.setForeground(determineScoreFieldForeground(score));
-        scoreField.setText("Latest best score: " + score);
+		scoreField.setText("最新的最佳分数"/* "Latest best score: " */ + score);
     }
 
     private Color determineScoreFieldForeground(Score<?> score) {

@@ -99,8 +99,8 @@ public class SolutionConverter<Solution_> extends LoggingMain {
         File dataDir = CommonApp.determineDataDir(dataDirName);
         inputDir = new File(dataDir, inputDirName);
         if (!inputDir.exists() || !inputDir.isDirectory()) {
-            throw new IllegalStateException("The directory inputDir (" + inputDir.getAbsolutePath()
-                    + ") does not exist or is not a directory.");
+            throw new IllegalStateException("输入文件夹 (" + inputDir.getAbsolutePath()
+                    + ") 不存在，或这不是一个文件夹.");
         }
         outputDir = new File(dataDir, outputDirName);
     }
@@ -108,7 +108,7 @@ public class SolutionConverter<Solution_> extends LoggingMain {
     public void convertAll() {
         File[] inputFiles = inputDir.listFiles();
         if (inputFiles == null) {
-            throw new IllegalStateException("Unable to list the files in the inputDirectory ("
+            throw new IllegalStateException("无法列出输入文件夹中的文件 ("
                     + inputDir.getAbsolutePath() + ").");
         }
         Arrays.sort(inputFiles, new ProblemFileComparator());
@@ -136,8 +136,8 @@ public class SolutionConverter<Solution_> extends LoggingMain {
     public void convert(String inputFileName, String outputFileName) {
         File inputFile = new File(inputDir, inputFileName);
         if (!inputFile.exists()) {
-            throw new IllegalStateException("The file inputFile (" + inputFile.getAbsolutePath()
-                    + ") does not exist.");
+            throw new IllegalStateException("输入文件 (" + inputFile.getAbsolutePath()
+                    + ") 不存在.");
         }
         File outputFile = new File(outputDir, outputFileName);
         outputFile.getParentFile().mkdirs();
@@ -156,7 +156,7 @@ public class SolutionConverter<Solution_> extends LoggingMain {
     protected void convert(File inputFile, File outputFile) {
         Solution_ solution = inputSolutionFileIO.read(inputFile);
         outputSolutionFileIO.write(solution, outputFile);
-        logger.info("Saved: {}", outputFile);
+        logger.info("已保存: {}", outputFile);
     }
 
 }

@@ -96,7 +96,7 @@ public class OptaPlannerExamplesApp extends JFrame {
     private Container createContentPane() {
         JPanel contentPane = new JPanel(new BorderLayout(5, 5));
         contentPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        JLabel titleLabel = new JLabel("请选择示例?", JLabel.CENTER);
+        JLabel titleLabel = new JLabel("点击方块选择需演示的案例", JLabel.CENTER);
         titleLabel.setFont(titleLabel.getFont().deriveFont(20.0f));
         contentPane.add(titleLabel, BorderLayout.NORTH);
         JScrollPane examplesScrollPane = new JScrollPane(createExamplesPanel());

@@ -47,7 +47,7 @@ public abstract class AbstractPngSolutionImporter<Solution_> extends AbstractSol
             pngInputBuilder.setImage(image);
             try {
                 Solution_ solution = pngInputBuilder.readSolution();
-                logger.info("Imported: {}", inputFile);
+                logger.info("已导入: {}", inputFile);
                 return solution;
             } catch (IllegalArgumentException | IllegalStateException e) {
                 throw new IllegalArgumentException("Exception in inputFile (" + inputFile + ")", e);

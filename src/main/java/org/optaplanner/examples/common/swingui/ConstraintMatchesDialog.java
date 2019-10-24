@@ -53,7 +53,7 @@ public class ConstraintMatchesDialog extends JDialog {
 
     public ConstraintMatchesDialog(SolverAndPersistenceFrame solverAndPersistenceFrame,
             SolutionBusiness solutionBusiness) {
-        super(solverAndPersistenceFrame, "Constraint matches", true);
+        super(solverAndPersistenceFrame, "违反的约束 " /* "Constraint matches" */, true);
         this.solutionBusiness = solutionBusiness;
     }
 
@@ -68,7 +68,7 @@ public class ConstraintMatchesDialog extends JDialog {
         buttonPanel.add(new JButton(okAction));
         if (!solutionBusiness.isConstraintMatchEnabled()) {
             JPanel unsupportedPanel = new JPanel(new BorderLayout());
-            JLabel unsupportedLabel = new JLabel("Constraint matches are not supported with this ScoreDirector.");
+            JLabel unsupportedLabel = new JLabel("此ScoreDirector不支持约束违反统计功能." /* "Constraint matches are not supported with this ScoreDirector." */);
             unsupportedPanel.add(unsupportedLabel, BorderLayout.CENTER);
             unsupportedPanel.add(buttonPanel, BorderLayout.SOUTH);
             setContentPane(unsupportedPanel);
@@ -90,7 +90,7 @@ public class ConstraintMatchesDialog extends JDialog {
             tableScrollPane.setPreferredSize(new Dimension(700, 300));
             splitPane.setTopComponent(tableScrollPane);
             JPanel bottomPanel = new JPanel(new BorderLayout());
-            JLabel detailLabel = new JLabel("Constraint matches of selected constraint type");
+			JLabel detailLabel = new JLabel("所选的约束类型约束违反情况" /* "Constraint matches of selected constraint type" */);
             detailLabel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
             bottomPanel.add(detailLabel, BorderLayout.NORTH);
             final JTextArea detailTextArea = new JTextArea(10, 80);
@@ -150,13 +150,13 @@ public class ConstraintMatchesDialog extends JDialog {
         public String getColumnName(int columnIndex) {
             switch (columnIndex) {
                 case 0:
-                    return "Constraint name";
+				return "约束名称"/* "Constraint name" */;
                 case 1:
-                    return "Constraint weight";
+				return "约束权重"/* "Constraint weight" */;
                 case 2:
-                    return "Match count";
+				return "违反个数"/* "Match count" */;
                 case 3:
-                    return "Score";
+				return "分数"/* "Score" */;
                 default:
                     throw new IllegalStateException("The columnIndex (" + columnIndex + ") is invalid.");
             }

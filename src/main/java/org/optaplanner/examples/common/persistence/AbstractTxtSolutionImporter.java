@@ -53,10 +53,10 @@ public abstract class AbstractTxtSolutionImporter<Solution_> extends AbstractSol
                 logger.info("Imported: {}", inputFile);
                 return solution;
             } catch (IllegalArgumentException | IllegalStateException e) {
-                throw new IllegalArgumentException("Exception in inputFile (" + inputFile + ")", e);
+                throw new IllegalArgumentException("导入文件异常 (" + inputFile + ")", e);
             }
         } catch (IOException e) {
-            throw new IllegalArgumentException("Could not read the file (" + inputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法读取文件 (" + inputFile.getName() + ").", e);
         }
     }
 
@@ -69,12 +69,12 @@ public abstract class AbstractTxtSolutionImporter<Solution_> extends AbstractSol
             try {
                 return txtInputBuilder.readSolution();
             } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException("Exception in inputURL (" + inputURL + ")", e);
+                throw new IllegalArgumentException("导入URL异常 (" + inputURL + ")", e);
             } catch (IllegalStateException e) {
-                throw new IllegalStateException("Exception in inputURL (" + inputURL + ")", e);
+                throw new IllegalStateException("导入URL异常 (" + inputURL + ")", e);
             }
         } catch (IOException e) {
-            throw new IllegalArgumentException("Could not read the inputURL (" + inputURL + ").", e);
+            throw new IllegalArgumentException("无法读取导学的URL (" + inputURL + ").", e);
         }
     }
 

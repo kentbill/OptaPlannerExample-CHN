@@ -46,9 +46,9 @@ public abstract class AbstractTxtSolutionExporter<Solution_> extends AbstractSol
             txtOutputBuilder.setBufferedWriter(writer);
             txtOutputBuilder.setSolution(solution);
             txtOutputBuilder.writeSolution();
-            logger.info("Exported: {}", outputFile);
+            logger.info("已导出: {}", outputFile);
         } catch (IOException e) {
-            throw new IllegalArgumentException("Could not write the file (" + outputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法写入文件 (" + outputFile.getName() + ").", e);
         }
     }
 
