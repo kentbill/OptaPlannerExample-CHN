@@ -76,7 +76,7 @@ public class CloudComputerPanel extends JPanel {
     }
 
     private String getComputerLabel() {
-        return computer == null ? "Unassigned" : computer.getLabel();
+        return computer == null ? "未分配" /*"Unassigned"*/ : computer.getLabel();
     }
 
     private int getComputerCpuPower() {
@@ -106,7 +106,7 @@ public class CloudComputerPanel extends JPanel {
         if (computer != null) {
             JPanel deletePanel = new JPanel(new BorderLayout());
             JButton deleteButton = SwingUtils.makeSmallButton(new JButton(cloudBalancingPanel.getDeleteCloudComputerIcon()));
-            deleteButton.setToolTipText("Delete");
+			deleteButton.setToolTipText("删除" /* "Delete" */);
             deleteButton.addActionListener(e -> cloudBalancingPanel.deleteComputer(computer));
             deletePanel.add(deleteButton, BorderLayout.NORTH);
             labelAndDeletePanel.add(deletePanel, BorderLayout.EAST);
@@ -131,7 +131,7 @@ public class CloudComputerPanel extends JPanel {
     }
 
     private void createBarsUI() {
-        numberOfProcessesLabel = new JLabel("    0 processes");
+		numberOfProcessesLabel = new JLabel("0 个进程"  /* "    0 processes" */);
         numberOfProcessesLabel.setEnabled(false);
         numberOfProcessesLabel.setBorder(BorderFactory.createEmptyBorder(0, 37, 0, 0));
         add(numberOfProcessesLabel);
@@ -206,7 +206,7 @@ public class CloudComputerPanel extends JPanel {
     }
 
     private void updateBars(boolean used) {
-        numberOfProcessesLabel.setText(processList.size() + " processes");
+        numberOfProcessesLabel.setText(processList.size() +" 个进程"  /*" processes"*/);
         numberOfProcessesLabel.setEnabled(used);
         cpuPowerBar.setEnabled(used);
         cpuPowerBar.repaint();
@@ -302,11 +302,11 @@ public class CloudComputerPanel extends JPanel {
         private JPanel createHeaderPanel() {
             JPanel headerPanel = new JPanel(new GridLayout(0, 5));
             headerPanel.add(new JLabel(""));
-            JLabel cpuPowerLabel = new JLabel("CPU power");
+			JLabel cpuPowerLabel = new JLabel("CPU算力" /* "CPU power" */);
             headerPanel.add(cpuPowerLabel);
-            JLabel memoryLabel = new JLabel("Memory");
+			JLabel memoryLabel = new JLabel("内存容量" /* "Memory" */);
             headerPanel.add(memoryLabel);
-            JLabel networkBandwidthLabel = new JLabel("Network bandwidth");
+			JLabel networkBandwidthLabel = new JLabel("网络带宽" /* "Network bandwidth" */);
             headerPanel.add(networkBandwidthLabel);
             headerPanel.add(new JLabel(""));
             return headerPanel;

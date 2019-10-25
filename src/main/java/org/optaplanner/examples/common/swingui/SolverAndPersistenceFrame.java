@@ -345,7 +345,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private class SolveAction extends AbstractAction {
 
         public SolveAction() {
-            super("Solve", new ImageIcon(SolverAndPersistenceFrame.class.getResource("solveAction.png")));
+            super("启动" /*"Solve"*/, new ImageIcon(SolverAndPersistenceFrame.class.getResource("solveAction.png")));
         }
 
         @Override
@@ -391,7 +391,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private class TerminateSolvingEarlyAction extends AbstractAction {
 
         public TerminateSolvingEarlyAction() {
-            super("人工终止求解"/*"Terminate solving early"*/,
+            super("停止"/*"Terminate solving early"*/,
                     new ImageIcon(SolverAndPersistenceFrame.class.getResource("terminateSolvingEarlyAction.png")));
         }
 

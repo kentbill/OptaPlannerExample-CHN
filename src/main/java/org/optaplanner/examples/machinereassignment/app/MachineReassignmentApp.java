@@ -39,9 +39,9 @@ public class MachineReassignmentApp extends CommonApp<MachineReassignment> {
     }
 
     public MachineReassignmentApp() {
-        super("Machine reassignment",
-                "Official competition name: Google ROADEF 2012 - Machine reassignment\n\n" +
-                        "Reassign processes to machines.",
+        super("任务机台重分配",
+                "官方比赛名称: : Google ROADEF 2012 - Machine reassignment\n\n" +
+                        "(在已有方案的基础上)将任务(进程)重新分配到机台(计算机).",
                 SOLVER_CONFIG, DATA_DIR_NAME,
                 MachineReassignmentPanel.LOGO_PATH);
     }

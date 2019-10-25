@@ -157,7 +157,7 @@ public class CheapTimeImporter extends AbstractTxtSolutionImporter<CheapTimeSolu
                     BigInteger.valueOf(solution.getMachineList().size()).pow(solution.getTaskList().size()));
             /*logger.info("CheapTime {} has {} resources, {} machines, {} periods and {} tasks"
                          + " with a search space of {}.",*/
-            logger.info("问题 {} 有 {} 个资源, {} 个机台, {} 个时段和 {} 个任务"
+            logger.info("计时降费问题 {} 有 {} 个资源, {} 个机台, {} 个时段和 {} 个任务"
                     + " 问题规模为 {}.",
                     getInputId(),
                     solution.getResourceList().size(),

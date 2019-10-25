@@ -40,10 +40,19 @@ public class CloudBalancingApp extends CommonApp<CloudBalance> {
     }
 
     public CloudBalancingApp() {
+    	/*
         super("Cloud balancing",
                 "Assign processes to computers.\n\n" +
                 "Each computer must have enough hardware to run all of its processes.\n" +
                 "Each used computer inflicts a maintenance cost.",
+                SOLVER_CONFIG, DATA_DIR_NAME,
+                CloudBalancingPanel.LOGO_PATH);
+        */
+    	
+    	super("云端算力均衡",
+                "将进程分配到计算机.\n\n" +
+                "分配到一个计算机上的所有进程的硬件总需求，不能越过该计算机可提供的资源.\n" +
+                "每台计算一旦被使用，即产生相应的维护成本.",
                 SOLVER_CONFIG, DATA_DIR_NAME,
                 CloudBalancingPanel.LOGO_PATH);
     }

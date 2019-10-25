@@ -124,7 +124,7 @@ public class CloudBalancingPanel extends SolutionPanel<CloudBalance> {
         JPanel headerPanel = new JPanel(new GridLayout(0, 5));
         JPanel addPanel = new JPanel(new GridLayout());
         JButton addComputerButton = SwingUtils.makeSmallButton(new JButton(addCloudComputerIcon));
-        addComputerButton.setToolTipText("Add computer");
+		addComputerButton.setToolTipText("添加计算机"/* "Add computer" */);
         addComputerButton.addActionListener(e -> {
             CloudComputer computer = new CloudComputer();
             computer.setCpuPower(12);
@@ -135,7 +135,7 @@ public class CloudBalancingPanel extends SolutionPanel<CloudBalance> {
         });
         addPanel.add(addComputerButton);
         JButton addProcessButton = SwingUtils.makeSmallButton(new JButton(addCloudProcessIcon));
-        addProcessButton.setToolTipText("Add process");
+		addProcessButton.setToolTipText("添加进程"/* "Add process" */);
         addProcessButton.addActionListener(e -> {
             CloudProcess process = new CloudProcess();
             process.setRequiredCpuPower(3);
@@ -147,11 +147,11 @@ public class CloudBalancingPanel extends SolutionPanel<CloudBalance> {
         JPanel cornerPanel = new JPanel(new BorderLayout());
         cornerPanel.add(addPanel, BorderLayout.EAST);
         headerPanel.add(cornerPanel);
-        JLabel cpuPowerLabel = new JLabel("CPU power");
+		JLabel cpuPowerLabel = new JLabel("CPU算力"/* "CPU power" */);
         headerPanel.add(cpuPowerLabel);
-        JLabel memoryLabel = new JLabel("Memory");
+        JLabel memoryLabel = new JLabel("内存容量" /* "Memory" */);
         headerPanel.add(memoryLabel);
-        JLabel networkBandwidthLabel = new JLabel("Network bandwidth");
+        JLabel networkBandwidthLabel = new JLabel( "网络带宽" /* "Network bandwidth" */);
         headerPanel.add(networkBandwidthLabel);
         JLabel costLabel = new JLabel("Cost");
         headerPanel.add(costLabel);

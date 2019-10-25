@@ -37,6 +37,7 @@ public class VehicleRoutingApp extends CommonApp<VehicleRoutingSolution> {
     }
 
     public VehicleRoutingApp() {
+    	/*
         super("Vehicle routing",
                 "Official competition name: Capacitated vehicle routing problem (CVRP), " +
                         "optionally with time windows (CVRPTW)\n\n" +
@@ -44,6 +45,17 @@ public class VehicleRoutingApp extends CommonApp<VehicleRoutingSolution> {
                         "Find the shortest route possible.\n" +
                         "Do not overload the capacity of the vehicles.\n" +
                         "Arrive within the time window of each customer.",
+                SOLVER_CONFIG, DATA_DIR_NAME,
+                VehicleRoutingPanel.LOGO_PATH);
+        */
+    	
+    	super("车辆路径规划",
+                "官方比赛名称: 有限载重下的车辆路径规划问题 - Capacitated vehicle routing problem (CVRP), " +
+                        "添加可选条件 - 时间窗口下的车辆路线规划  (CVRPTW)\n\n" +
+                        "用数台车辆将揽收所有客户的所有邮包.\n\n" +
+                        "给辆车找出尽可能短的运行路径.\n" +
+                        "每辆车收件总重不可超过其载重限制.\n" +
+                        "在每个客户指定的时候窗口内到达收件处.",
                 SOLVER_CONFIG, DATA_DIR_NAME,
                 VehicleRoutingPanel.LOGO_PATH);
     }

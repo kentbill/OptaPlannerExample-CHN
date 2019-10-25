@@ -91,7 +91,7 @@ public class MachineReassignmentPanel extends SolutionPanel<MachineReassignment>
         unassignedPanel.setResourceList(resourceList);
         if (machineReassignment.getMachineList().size() > 1000) {
             if (tooBigLabel == null) {
-                tooBigLabel = new JLabel("The dataset is too big to show.");
+                tooBigLabel = new JLabel("数据量过大,无法显示.");
                 machineListPanel.add(tooBigLabel);
             }
         } else {

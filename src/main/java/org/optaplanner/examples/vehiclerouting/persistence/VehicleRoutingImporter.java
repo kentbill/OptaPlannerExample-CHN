@@ -106,7 +106,15 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
             BigInteger a = factorial(customerListSize + vehicleListSize - 1);
             BigInteger b = factorial(vehicleListSize - 1);
             BigInteger possibleSolutionSize = (a == null || b == null) ? null : a.divide(b);
+            /*
             logger.info("VehicleRoutingSolution {} has {} depots, {} vehicles and {} customers with a search space of {}.",
+                    getInputId(),
+                    solution.getDepotList().size(),
+                    solution.getVehicleList().size(),
+                    solution.getCustomerList().size(),
+                    getFlooredPossibleSolutionSize(possibleSolutionSize));
+            */
+            logger.info("路线问题 {} 中共有 {} 个仓库, {} 台车辆和 {} 个客户(收件点) 其问题规模为 {}.",
                     getInputId(),
                     solution.getDepotList().size(),
                     solution.getVehicleList().size(),
@@ -511,10 +519,11 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
                     long maximumDueTime = depot.getDueTime()
                             - serviceDuration - location.getDistanceTo(depot.getLocation());
                     if (dueTime > maximumDueTime) {
+                
                         logger.warn("The customer ({})'s dueTime ({}) was automatically reduced" +
                                 " to maximumDueTime ({}) because of the depot's dueTime ({}).",
                                 customer, dueTime, maximumDueTime, depot.getDueTime());
-                        dueTime = maximumDueTime;
+                        
                     }
                     customer.setDueTime(dueTime);
                     customer.setServiceDuration(serviceDuration);

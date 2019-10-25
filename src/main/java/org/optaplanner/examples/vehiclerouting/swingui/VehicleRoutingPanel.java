@@ -86,10 +86,10 @@ public class VehicleRoutingPanel extends SolutionPanel<VehicleRoutingSolution> {
                 newLocation = new AirLocation();
                 break;
             case ROAD_DISTANCE:
-                logger.warn("Adding locations for a road distance dataset is not supported.");
+			logger.warn("不支持向一个路程距离数据集添加位置" /* "Adding locations for a road distance dataset is not supported." */);
                 return;
             case SEGMENTED_ROAD_DISTANCE:
-                logger.warn("Adding locations for a segmented road distance dataset is not supported.");
+			logger.warn("不支持向一个分段路程距离数据集添加位置" /* "Adding locations for a segmented road distance dataset is not supported." */);
                 return;
             default:
                 throw new IllegalStateException("The distanceType (" + getSolution().getDistanceType()
@@ -99,7 +99,7 @@ public class VehicleRoutingPanel extends SolutionPanel<VehicleRoutingSolution> {
         nextLocationId++;
         newLocation.setLongitude(longitude);
         newLocation.setLatitude(latitude);
-        logger.info("Scheduling insertion of newLocation ({}).", newLocation);
+        logger.info("正在规划新插入的收件点" /*"Scheduling insertion of newLocation ({})."*/, newLocation);
         doProblemFactChange(scoreDirector -> {
             VehicleRoutingSolution solution = scoreDirector.getWorkingSolution();
             scoreDirector.beforeProblemFactAdded(newLocation);

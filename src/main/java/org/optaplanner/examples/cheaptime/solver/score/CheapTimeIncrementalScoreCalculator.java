@@ -71,8 +71,12 @@ public class CheapTimeIncrementalScoreCalculator extends AbstractIncrementalScor
         mediumScore = 0L;
         softScore = 0L;
         if (solution.getGlobalPeriodRangeFrom() != 0) {
-            throw new IllegalStateException("The globalPeriodRangeFrom (" + solution.getGlobalPeriodRangeFrom()
-                    + ") should be 0.");
+			/*
+			 * throw new IllegalStateException("The globalPeriodRangeFrom (" +
+			 * solution.getGlobalPeriodRangeFrom() + ") should be 0.");
+			 */
+        	   throw new IllegalStateException("全局周期的开始值 (" + solution.getGlobalPeriodRangeFrom()
+               + ") 应该为0.");
         }
         resourceListSize = solution.getResourceList().size();
         globalPeriodRangeTo = solution.getGlobalPeriodRangeTo();

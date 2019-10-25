@@ -46,7 +46,7 @@ public class BuoyVehicleRoutingSolutionInitializer extends AbstractCustomPhaseCo
         List<Standstill> standstillList = new ArrayList<>(vehicleList.size() + customerList.size());
         standstillList.addAll(vehicleList);
         standstillList.addAll(customerList);
-        logger.info("Starting sorting");
+		logger.info("启动排序" /* "Starting sorting" */);
         Map<Standstill, Customer[]> nearbyMap = new HashMap<>(standstillList.size());
         for (final Standstill origin : standstillList) {
             Customer[] nearbyCustomers = customerList.toArray(new Customer[0]);
@@ -60,7 +60,7 @@ public class BuoyVehicleRoutingSolutionInitializer extends AbstractCustomPhaseCo
             });
             nearbyMap.put(origin, nearbyCustomers);
         }
-        logger.info("Done sorting");
+		logger.info("排序完成"/* "Done sorting" */);
 
         List<Standstill> buoyList = new ArrayList<>(vehicleList);
 
@@ -106,6 +106,7 @@ public class BuoyVehicleRoutingSolutionInitializer extends AbstractCustomPhaseCo
             stepEntity.setPreviousStandstill(stepValue);
             scoreDirector.afterVariableChanged(stepEntity, "previousStandstill");
             scoreDirector.triggerVariableListeners();
+           // logger.debug("    Score ({}), assigned customer ({}) to stepValue ({}).", stepScore, stepEntity, stepValue);
             logger.debug("    Score ({}), assigned customer ({}) to stepValue ({}).", stepScore, stepEntity, stepValue);
         }
     }
