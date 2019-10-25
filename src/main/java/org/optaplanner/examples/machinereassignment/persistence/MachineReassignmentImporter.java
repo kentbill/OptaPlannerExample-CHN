@@ -96,7 +96,7 @@ public class MachineReassignmentImporter extends AbstractTxtSolutionImporter<Mac
             BigInteger possibleSolutionSize = BigInteger.valueOf(machineReassignment.getMachineList().size()).pow(
                     machineReassignment.getProcessList().size());
             logger.info("MachineReassignment {} has {} resources, {} neighborhoods, {} locations, {} machines," +
-                    " {} services, {} processes and {} balancePenalties with a search space of {}.",
+                    " {} services, {} processes and {} balancePenalties with a search space of {}." , 
                     getInputId(),
                     machineReassignment.getResourceList().size(),
                     machineReassignment.getNeighborhoodList().size(),

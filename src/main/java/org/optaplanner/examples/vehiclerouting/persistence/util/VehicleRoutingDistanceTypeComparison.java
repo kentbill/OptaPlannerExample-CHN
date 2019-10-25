@@ -61,7 +61,7 @@ public class VehicleRoutingDistanceTypeComparison extends LoggingMain {
         for (int i = 0; i < filePaths.length; i++) {
             File file = new File(dataDir, filePaths[i]);
             if (!file.exists()) {
-                throw new IllegalArgumentException("The file (" + file + ") does not exist.");
+				throw new IllegalArgumentException("文件 (" + file + ") 不存在t." /* "The file (" + file + ") does not exist." */);
             }
             files[i] = file;
         }
