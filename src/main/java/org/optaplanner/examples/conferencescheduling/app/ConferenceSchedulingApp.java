@@ -39,8 +39,8 @@ public class ConferenceSchedulingApp extends CommonApp<ConferenceSolution> {
     }
 
     public ConferenceSchedulingApp() {
-        super("Conference scheduling",
-                "Assign conference talks to a timeslot and a room.",
+        super("会议日程安排",
+                "将各个会议的演讲分配到各个时间段和会议厅.",
                 SOLVER_CONFIG, DATA_DIR_NAME,
                 ConferenceSchedulingPanel.LOGO_PATH);
     }

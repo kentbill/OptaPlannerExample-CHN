@@ -50,10 +50,10 @@ public abstract class AbstractPngSolutionImporter<Solution_> extends AbstractSol
                 logger.info("已导入: {}", inputFile);
                 return solution;
             } catch (IllegalArgumentException | IllegalStateException e) {
-                throw new IllegalArgumentException("Exception in inputFile (" + inputFile + ")", e);
+                throw new IllegalArgumentException("导入文件异常 (" + inputFile + ")", e);
             }
         } catch (IOException e) {
-            throw new IllegalArgumentException("Could not read the file (" + inputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法读取文件 (" + inputFile.getName() + ").", e);
         }
     }
 

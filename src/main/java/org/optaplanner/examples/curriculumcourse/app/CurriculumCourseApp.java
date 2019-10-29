@@ -39,9 +39,9 @@ public class CurriculumCourseApp extends CommonApp<CourseSchedule> {
     }
 
     public CurriculumCourseApp() {
-        super("Course timetabling",
-                "Official competition name: ITC 2007 track3 - Curriculum course scheduling\n\n" +
-                        "Assign lectures to periods and rooms.",
+        super("课程表",
+                "官方比较名称: ITC 2007 track3 - Curriculum course scheduling\n\n" +
+                        "给课堂分配时间和教室.",
                 SOLVER_CONFIG, DATA_DIR_NAME,
                 CurriculumCoursePanel.LOGO_PATH);
     }

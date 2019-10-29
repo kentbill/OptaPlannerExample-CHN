@@ -45,20 +45,20 @@ public class ConferenceSchedulingPanel extends SolutionPanel<ConferenceSolution>
             });
         });
 
-        JButton showInLibreOfficeOrExcelButton = new JButton("Show in LibreOffice or Excel");
+        JButton showInLibreOfficeOrExcelButton = new JButton("在Libre或Excel中显示" /* “Show in LibreOffice or Excel" */);
         showInLibreOfficeOrExcelButton.addActionListener(event -> {
             SolutionFileIO<ConferenceSolution> solutionFileIO = new ConferenceSchedulingXlsxFileIO();
             File tempFile;
             try {
                 tempFile = File.createTempFile(solutionBusiness.getSolutionFileName(), "." + solutionFileIO.getOutputFileExtension());
             } catch (IOException e) {
-                throw new IllegalStateException("Failed to create temp file.", e);
+                throw new IllegalStateException("创建临时文件失败." /*"Failed to create temp file." */, e);
             }
             solutionFileIO.write(solutionBusiness.getSolution(), tempFile);
             try {
                 Desktop.getDesktop().open(tempFile);
             } catch (IOException e) {
-                throw new IllegalStateException("Failed to show temp file (" + tempFile + ") in LibreOffice or Excel.", e);
+                throw new IllegalStateException( "在LibreOffice或Excel中显示临时文件 (" + tempFile + ") 失败."  /*"Failed to show temp file (" + tempFile + ") in LibreOffice or Excel." */, e);
             }
         });
 
@@ -68,7 +68,7 @@ public class ConferenceSchedulingPanel extends SolutionPanel<ConferenceSolution>
         importPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         showPanel.add(showInLibreOfficeOrExcelButton);
-        showPanel.add(new JLabel("Changes to that file are ignored unless you explicitly save it there and open it here."));
+		showPanel.add(new JLabel("除非显式保存并在此处打开，否则将忽略对该文件的更改." /* "Changes to that file are ignored unless you explicitly save it there and open it here."	 */));
         importPanel.add(publishButton);
 
         JPanel buttonsPanel = new JPanel();

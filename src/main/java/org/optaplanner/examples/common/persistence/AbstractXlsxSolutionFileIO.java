@@ -117,22 +117,36 @@ public abstract class AbstractXlsxSolutionFileIO<Solution_> implements SolutionF
             XSSFCell weightCell = nextCell();
             if (consumer != null) {
                 if (weightCell.getCellTypeEnum() != CellType.NUMERIC) {
+                	/*
                     throw new IllegalArgumentException(currentPosition() + ": The value ("
                             + weightCell.getStringCellValue()
                             + ") for constraint (" + name + ") must be a number and the cell type must be numeric.");
+                    */
+                	throw new IllegalArgumentException(currentPosition() + ": 约束(" + name + ") 的值 ("
+                            + weightCell.getStringCellValue()
+                            + ") 必须是一个数字，其所在的单元格类型必须是数值型.");
                 }
                 double value = weightCell.getNumericCellValue();
                 if (((double) ((int) value)) != value) {
-                    throw new IllegalArgumentException(currentPosition() + ": The value (" + value
-                            + ") for constraint (" + name + ") must be an integer.");
+//                    throw new IllegalArgumentException(currentPosition() + ": The value (" + value
+//                            + ") for constraint (" + name + ") must be an integer.");
+                	
+                	throw new IllegalArgumentException(currentPosition() + ": 约束 (" + name
+                            + ") 的值 (" +  value + ") 必须是整数.");
                 }
                 consumer.accept((int) value);
             } else {
                 if (weightCell.getCellTypeEnum() == CellType.NUMERIC
                         || !weightCell.getStringCellValue().equals("n/a")) {
-                    throw new IllegalArgumentException(currentPosition() + ": The value ("
+                    /*
+                	throw new IllegalArgumentException(currentPosition() + ": The value ("
                             + weightCell.getStringCellValue()
                             + ") for constraint (" + name + ") must be an n/a.");
+                    */
+                	
+                	throw new IllegalArgumentException(currentPosition() + ": 约束 ("
+                            + name
+                            + ") 的值 (" + weightCell.getStringCellValue() + ") 必须填写 n/a.");
                 }
             }
             readHeaderCell(constraintDescription);

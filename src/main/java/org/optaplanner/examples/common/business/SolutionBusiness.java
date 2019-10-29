@@ -138,25 +138,25 @@ public class SolutionBusiness<Solution_> {
         if (hasImporter()) {
             importDataDir = new File(dataDir, "import");
             if (!importDataDir.exists()) {
-                throw new IllegalStateException("The directory importDataDir (" + importDataDir.getAbsolutePath()
-                        + ") does not exist.");
+                throw new IllegalStateException("数据导入文件夹 (" + importDataDir.getAbsolutePath()
+                        + ") 不存在.");
             }
         }
         unsolvedDataDir = new File(dataDir, "unsolved");
         if (!unsolvedDataDir.exists()) {
-            throw new IllegalStateException("The directory unsolvedDataDir (" + unsolvedDataDir.getAbsolutePath()
-                    + ") does not exist.");
+            throw new IllegalStateException("待求解文件夹 (" + unsolvedDataDir.getAbsolutePath()
+                    + ") 不存在.");
         }
         solvedDataDir = new File(dataDir, "solved");
         if (!solvedDataDir.exists() && !solvedDataDir.mkdir()) {
-            throw new IllegalStateException("The directory solvedDataDir (" + solvedDataDir.getAbsolutePath()
-                    + ") does not exist and could not be created.");
+            throw new IllegalStateException("已解决文件夹 (" + solvedDataDir.getAbsolutePath()
+                    + ") 不存在且无法创建.");
         }
         if (hasExporter()) {
             exportDataDir = new File(dataDir, "export");
             if (!exportDataDir.exists() && !exportDataDir.mkdir()) {
-                throw new IllegalStateException("The directory exportDataDir (" + exportDataDir.getAbsolutePath()
-                        + ") does not exist and could not be created.");
+                throw new IllegalStateException("数据导出文件珓 (" + exportDataDir.getAbsolutePath()
+                        + ") 不存在且无法创建.");
             }
         }
     }

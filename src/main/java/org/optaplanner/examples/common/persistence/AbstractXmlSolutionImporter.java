@@ -56,12 +56,12 @@ public abstract class AbstractXmlSolutionImporter<Solution_> extends AbstractSol
                 logger.info("Imported: {}", inputFile);
                 return solution;
             } catch (IllegalArgumentException | IllegalStateException e) {
-                throw new IllegalArgumentException("Exception in inputFile (" + inputFile + ")", e);
+                throw new IllegalArgumentException("输入文件异常 (" + inputFile + ")", e);
             }
         } catch (IOException e) {
-            throw new IllegalArgumentException("Could not read the file (" + inputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法读取文件 (" + inputFile.getName() + ").", e);
         } catch (JDOMException e) {
-            throw new IllegalArgumentException("Could not parse the XML file (" + inputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法分析XML文件 (" + inputFile.getName() + ").", e);
         }
     }
 
@@ -90,8 +90,8 @@ public abstract class AbstractXmlSolutionImporter<Solution_> extends AbstractSol
 
         protected void assertElementName(Element element, String name) {
             if (!element.getName().equals(name)) {
-                throw new IllegalStateException("Element name (" + element.getName()
-                        + ") should be " + name + ".");
+                throw new IllegalStateException("无素名 (" + element.getName()
+                        + ") 应该是" + name + ".");
             }
         }
 

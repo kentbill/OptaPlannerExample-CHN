@@ -50,7 +50,7 @@ public abstract class AbstractTxtSolutionImporter<Solution_> extends AbstractSol
             txtInputBuilder.setBufferedReader(reader);
             try {
                 Solution_ solution = txtInputBuilder.readSolution();
-                logger.info("Imported: {}", inputFile);
+                logger.info("已导入: {}", inputFile);
                 return solution;
             } catch (IllegalArgumentException | IllegalStateException e) {
                 throw new IllegalArgumentException("导入文件异常 (" + inputFile + ")", e);

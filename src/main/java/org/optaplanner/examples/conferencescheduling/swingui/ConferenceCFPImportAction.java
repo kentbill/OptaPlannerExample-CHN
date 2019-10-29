@@ -124,16 +124,21 @@ public class ConferenceCFPImportAction implements CommonApp.ExtraAction<Conferen
                 cfpProblem = get();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new IllegalStateException("Importing was interrupted.", e);
+                throw new IllegalStateException( "导入被中断"/* "Importing was interrupted." */, e);
             } catch (ExecutionException e) {
+            	/*
                 JOptionPane.showMessageDialog(solutionPanel,
                         "CFP import failed.\nThe next dialog will explain the cause.\n\n"
                                 + "Fix it in ConferenceSchedulingCfpDevoxxImporter.java in the optaplanner repository.");
-                throw new IllegalStateException("Importing failed.", e.getCause());
+                */
+            	 JOptionPane.showMessageDialog(solutionPanel,
+                         "CFP 导入失败.\n下个对话框将显示原因.\n\n"
+                                 + "请在optaplanner代码库的源文件 ConferenceSchedulingCfpDevoxxImporter.java 中修复.");
+                throw new IllegalStateException("导入失败" /* "Importing failed." */, e.getCause());
             }
             solutionBusiness.setSolution(cfpProblem);
             solutionBusiness.setSolutionFileName(solutionBusiness.getSolution().getConferenceName());
-            JOptionPane.showMessageDialog(solutionPanel, "CFP data imported successfully.");
+            JOptionPane.showMessageDialog(solutionPanel, "CFP 数据导入成功.");
             solutionPanel.getSolverAndPersistenceFrame().setSolutionLoaded(null);
         }
     }

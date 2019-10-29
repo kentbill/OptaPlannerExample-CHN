@@ -174,7 +174,8 @@ public class ConstraintMatchesDialog extends JDialog {
                 case 3:
                     return String.class;
                 default:
-                    throw new IllegalStateException("The columnIndex (" + columnIndex + ") is invalid.");
+                   /* throw new IllegalStateException("The columnIndex (" + columnIndex + ") is invalid.");*/
+                	throw new IllegalStateException("列号 (" + columnIndex + ") 不正确.");
             }
         }
 
@@ -192,7 +193,8 @@ public class ConstraintMatchesDialog extends JDialog {
                 case 3:
                     return constraintMatchTotal.getScore().toShortString();
                 default:
-                    throw new IllegalStateException("The columnIndex (" + columnIndex + ") is invalid.");
+//                    throw new IllegalStateException("The columnIndex (" + columnIndex + ") is invalid.");
+                	throw new IllegalStateException("列号 (" + columnIndex + ") 不正确.");
             }
         }
     }

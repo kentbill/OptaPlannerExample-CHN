@@ -47,8 +47,9 @@ public abstract class CommonApp<Solution_> extends LoggingMain {
     public static File determineDataDir(String dataDirName) {
         String dataDirPath = System.getProperty(DATA_DIR_SYSTEM_PROPERTY, "data/");
         File dataDir = new File(dataDirPath, dataDirName);
+
         if (!dataDir.exists()) {
-            throw new IllegalStateException("The directory dataDir (" + dataDir.getAbsolutePath()
+            throw new IllegalStateException(" The directory dataDir (" + dataDir.getAbsolutePath()
                     + ") does not exist.\n" +
                     " Either the working directory should be set to the directory that contains the data directory" +
                     " (which is not the data directory itself), or the system property "
@@ -58,6 +59,7 @@ public abstract class CommonApp<Solution_> extends LoggingMain {
                     " In an IDE (IntelliJ, Eclipse, NetBeans), open the \"Run configuration\""
                     + " to change \"Working directory\" (or add the system property in \"VM options\").");
         }
+
         return dataDir;
     }
 

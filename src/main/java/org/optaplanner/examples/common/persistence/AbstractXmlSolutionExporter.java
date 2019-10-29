@@ -54,9 +54,9 @@ public abstract class AbstractXmlSolutionExporter<Solution_> extends AbstractSol
             outputter.output(document, out);
             logger.info("Exported: {}", outputFile);
         } catch (IOException e) {
-            throw new IllegalArgumentException("Could not write the file (" + outputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法写入文件 (" + outputFile.getName() + ").", e);
         } catch (JDOMException e) {
-            throw new IllegalArgumentException("Could not format the XML file (" + outputFile.getName() + ").", e);
+            throw new IllegalArgumentException("无法格式化XML文件 (" + outputFile.getName() + ").", e);
         }
     }
 
